@@ -2,12 +2,11 @@ import React from 'react';
 import { Route, Redirect, BrowserRouter as Router } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
-import './App.scss';
 import SignIn from '../../containers/SignIn';
 import Dashboard from '../../containers/Dashboard';
 
 const isToken = localStorage.getItem('token');
-const App = () => {
+export const App = () => {
 	function PrivateRoute({ children, ...rest }) {
 		return <Route {...rest} render={(props) => (isToken ? children : <Redirect to={{ pathname: '/' }} />)} />;
 	}
@@ -28,5 +27,3 @@ const App = () => {
 		</div>
 	);
 };
-
-export default App;
